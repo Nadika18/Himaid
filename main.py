@@ -36,6 +36,7 @@ def dashboard():
         print(user.DeviceID)
     return render_template('dashboard.html', users=users)
 
+# Register user route
 @app.route('/register',methods=['GET','POST'])
 def register():
     if request.method == 'POST':
@@ -48,6 +49,12 @@ def register():
         User.create(name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device)
         return redirect(url_for('dashboard'))
     return render_template('register.html')
+
+# Profile Route
+@app.route('/profile/<int:age>')
+def profile(age):
+    user = User.get(User.age == age)
+    return render_template('profile.html', user=user)
 
 # server
 if __name__ == '__main__':

@@ -9,7 +9,7 @@ body {
 }
 
 .main-content {
-	padding-top: 100px;
+	padding-top: 30px;
 	padding-bottom: 100px;
 }
 
@@ -41,4 +41,8 @@ body {
 }
 .social-links a:hover {
 	transform: translateY(-3px);
+}
+
+.fa {
+	margin: 10px 15px;
 }
