@@ -28,7 +28,7 @@ db.connect()
 db.create_tables([User, Location])
 
 # Index page
-@app.route('/dashboard')
+@app.route('/')
 def dashboard():
     # Get all users
     users = User.select()
@@ -36,7 +36,6 @@ def dashboard():
         print(user.DeviceID)
     return render_template('dashboard.html', users=users)
 
-# Register user route
 @app.route('/register',methods=['GET','POST'])
 def register():
     if request.method == 'POST':
@@ -49,13 +48,9 @@ def register():
         User.create(name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device)
         return redirect(url_for('dashboard'))
     return render_template('register.html')
-
-# Profile Route
-@app.route('/profile/<int:age>')
-def profile(age):
-    user = User.get(User.age == age)
-    return render_template('profile.html', user=user)
-
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
 # server
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='127.0.0.1',port=8000)
