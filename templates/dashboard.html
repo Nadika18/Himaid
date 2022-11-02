@@ -182,6 +182,8 @@ $(document).ready(function(){
                     <div class="col-sm-5">
                         <h2>User <b>Management</b></h2>
                     </div>
+                        <a href="{{url_for('registerdevice')}}" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Device</span></a>						
+                    </div>
                     <div class="col-sm-7">
                         <a href="{{url_for('register')}}" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>						
                     </div>
@@ -255,7 +257,22 @@ $(document).ready(function(){
     $(".clickable-row").click(function() {
         window.location = $(this).data("href");
     });
-});
+
+    window.addEventListener("load", function(event) {
+      const getSensorReading = function() {
+	    fetch(`http://${location.host}/update`)
+		    .then((resp) => resp.json())
+		    .then(function(response) {
+	    if(response.i){
+                            console.log(response);
+		window.open(`http://${location.host}/profile/${response.i}`,'_blank');
+	    }
+	    });
+  	}
+      getSensorReading();
+      setInterval(getSensorReading, 50); 
+      });
+    });
 
 
     </script>
