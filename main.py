@@ -32,8 +32,6 @@ db.create_tables([User, Location])
 def dashboard():
     # Get all users
     users = User.select()
-    for user in users:
-        print(user.DeviceID)
     return render_template('dashboard.html', users=users)
 
 # Register user route
@@ -45,7 +43,6 @@ def register():
         country = request.form.get('country')
         emergency = request.form.get('contact')
         device = request.form.get('device')
-        print(name, age, country, emergency, device)
         User.create(name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device)
         return redirect(url_for('dashboard'))
     return render_template('register.html')
@@ -58,4 +55,4 @@ def profile(age):
 
 # server
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1',port=8000)
+    app.run(debug=True, host='127.0.0.1',port=5000)
