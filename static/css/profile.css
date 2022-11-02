@@ -53,3 +53,11 @@ body {
 .profile-card {
 	padding : 2rem!important;
 }
+
+.gmap_canvas {
+	overflow: hidden;
+	background: none !important;
+	height: 500px;
+	/* width: 100% */
+	width: 62rem!important;
+}

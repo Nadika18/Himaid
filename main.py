@@ -77,7 +77,9 @@ def register():
 @app.route('/profile/<int:device>')
 def profile(device):
     user = User.get(User.DeviceID == device)
-    return render_template('profile.html', user=user)
+    lat = 28.5300
+    long = 83.8780
+    return render_template('profile.html', user=user, lat=lat, long=long)
 
 @app.route('/delete/<username>')
 def delete(username):
