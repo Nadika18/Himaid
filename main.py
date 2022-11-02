@@ -4,22 +4,23 @@ from peewee import *
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import os
-
-import board
-import busio
-import digitalio
-import adafruit_rfm9x
 from datetime import datetime
 import json
 
-RADIO_FREQ_MHZ = 433.0  # Frequency of the radio in Mhz. Must match your
-CS = digitalio.DigitalInOut(board.CE1)
-RESET = digitalio.DigitalInOut(board.D25)
-LED = digitalio.DigitalInOut(board.D13)
-LED.direction = digitalio.Direction.OUTPUT
-spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
-rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, RADIO_FREQ_MHZ)
-rfm9x.tx_power = 23
+if os.uname().nodename == "rpi":
+    import board
+    import busio
+    import digitalio
+    import adafruit_rfm9x
+
+    RADIO_FREQ_MHZ = 433.0  # Frequency of the radio in Mhz. Must match your
+    CS = digitalio.DigitalInOut(board.CE1)
+    RESET = digitalio.DigitalInOut(board.D25)
+    LED = digitalio.DigitalInOut(board.D13)
+    LED.direction = digitalio.Direction.OUTPUT
+    spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
+    rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, RADIO_FREQ_MHZ)
+    rfm9x.tx_power = 23
 
 db = SqliteDatabase("users.db")
 app = Flask(__name__)
@@ -109,23 +110,24 @@ def delete(username):
 
 @app.route('/update')
 def update():
-    packet = rfm9x.receive()
-    if packet is not None:
-        LED.value = True
-        rssi = rfm9x.last_rssi
-        try:
-            packet_text = str(packet,"ascii")
-        except:
-            return jsonify({})
-        packet_json = json.loads(packet_text)
-        try:
-            print(packet_json["l"])
-            loc = Location.get(Location.Latitude == packet_json["l"][0])
-        except:
-            Location.create(DeviceID = packet_json["i"], Latitude = packet_json["l"][0], Longitude = packet_json["l"][1])
+    if os.uname().nodename == "rpi":
+        packet = rfm9x.receive()
+        if packet is not None:
+            LED.value = True
+            rssi = rfm9x.last_rssi
+            try:
+                packet_text = str(packet,"ascii")
+            except:
+                return jsonify({})
+            packet_json = json.loads(packet_text)
+            try:
+                print(packet_json["l"])
+                loc = Location.get(Location.Latitude == packet_json["l"][0])
+            except:
+                Location.create(DeviceID = packet_json["i"], Latitude = packet_json["l"][0], Longitude = packet_json["l"][1])
+            LED.value = False
+            return jsonify(packet_json)
         LED.value = False
-        return jsonify(packet_json)
-    LED.value = False
     return jsonify({})
         
 # server
