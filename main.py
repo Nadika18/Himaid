@@ -1,4 +1,3 @@
-from typing import Text
 from flask import Flask, render_template, url_for, redirect, request
 from datetime import datetime
 from peewee import *
@@ -19,24 +18,26 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #     migrator.add_column('some_table', 'status', status_field),
 #     migrator.drop_column('some_table', 'old_column'),
 # )
-    
+ 
 class BaseTable(Model):
     class Meta:
         database = db
 class User(BaseTable):
+    # id = PrimaryKeyField()
     name = TextField()
     age = IntegerField()
     StartDate = TextField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     Country = TextField()
     fileName= TextField()
     EmergencyContact = TextField()
-    DeviceID = IntegerField(primary_key=True, unique=True, null=False)
+    DeviceID = IntegerField(unique=True, null=False)
     
     class Meta:
         database = db
 
+
 class Location(BaseTable):
-    DeviceID = ForeignKeyField(User, backref="DeviceID")
+    UserID = ForeignKeyField(User, backref="id")
     Latitude = FloatField()
     Longitude = FloatField()
     LastUpdate = DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -63,19 +64,19 @@ def register():
         age = request.form.get('age')
         country = request.form.get('country')
         emergency = request.form.get('contact')
-        device = request.form.get('device')
+        device = request.form.get('device_id')
         file=request.files['file']
         filename=secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
         print(name, age, country, emergency, device,filename)
-        User.create(name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device,fileName=filename)
+        User.create(id=1,name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device,fileName=filename)
         return redirect(url_for('dashboard'))
     return render_template('register.html')
 
 # Profile Route
-@app.route('/profile/<int:age>')
-def profile(age):
-    user = User.get(User.age == age)
+@app.route('/profile/<int:device>')
+def profile(device):
+    user = User.get(User.DeviceID == device)
     return render_template('profile.html', user=user)
 
 @app.route('/delete/<username>')
