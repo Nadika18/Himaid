@@ -16,7 +16,7 @@
 				<div class="col-sm-3 col-md-6  col-lg-4 ">
 					<div class="profile-card card rounded-lg shadow p-4 p-xl-5 mb-4 text-center position-relative overflow-hidden">
 						<div class="banner"></div>
-						<img src="{{url_for('static',filename='img/user1.jpg')}}" alt="" class="img-circle mx-auto mb-3">
+						<img src="../static/img/{{user.fileName}}" alt="" class="img-circle mx-auto mb-3">
 						<h3 class="mb-4">{{ user.name }}</h3>
 						<div class="text-left mb-4">
 							
@@ -25,6 +25,7 @@
 							<p class="mb-2"><i class="fa fa-phone mr-2"></i>{{user.EmergencyContact}}</p>
                             <p class="mb-2"><i class="fa fa-calendar-alt"></i>{{user.StartDate}}</p>
                             <p class="mb-2"><i class="fa fa-tablet-android-alt"></i>{{user.DeviceID}}</p>
+							
                            
 							
 						</div>

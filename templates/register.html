@@ -21,7 +21,7 @@
           </div>
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
-            <form method="post" action="/register">
+            <form method="post" action="/register" enctype=multipart/form-data>
 
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" name="name" id="floatingInputUsername" placeholder="myusername" required autofocus>
@@ -49,14 +49,20 @@
                 <input type="text" class="form-control" name="device_id" id="floatingDeviceId" placeholder="Device ID">
                 <label for="floatingDeviceId">Device ID</label>
               </div>
-
-              
-
-              <div class="d-grid mb-2">
-                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button>
+              <br>
+              <div class="form-floating mb-3">
+                <div>
+                <p>Upload your picture</p>
+              </div>
+                
+                <input type="file" id="myFile" name="file">
               </div>
 
-              
+              <div class="d-grid mb-2">
+                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit" value=Upload>Register</button>
+              </div>
+
+             
 
             </form>
           </div>
