@@ -36,6 +36,11 @@ body {
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
 }
+.row {
+    margin-right: 25rem;
+    display: flex;
+    flex-wrap: nowrap;
+}
 .table-title h2 {
     margin: 5px 0 0;
     font-size: 24px;
@@ -182,6 +187,7 @@ $(document).ready(function(){
                     <div class="col-sm-5">
                         <h2>User <b>Management</b></h2>
                     </div>
+                    <div class="col-sm-7">
                         <a href="{{url_for('registerdevice')}}" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Device</span></a>						
                     </div>
                     <div class="col-sm-7">
