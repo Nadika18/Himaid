@@ -18,7 +18,7 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 
 #System_Block_Diagram
 
-![System Block Diagram](https://i.ibb.co/G5K0410/base.jpg)
+![System Block Diagram](https://ibb.co/tmRDDH4)
 
 
 
