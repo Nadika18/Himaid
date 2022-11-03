@@ -16,9 +16,10 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 <p align='center'>Base Station Device</p>
 
 
-#System_Block_Diagram
+# System_Block_Diagram
 
-![System Block Diagram](https://ibb.co/tmRDDH4)
+[![Team-PNP-system-diagram.png](https://i.postimg.cc/Tw2CWX9F/Team-PNP-system-diagram.png)](https://postimg.cc/wtPhSZnQ)
+<p align='center'>System Block diagram</p>
 
 
 
