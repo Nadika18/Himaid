@@ -18,7 +18,8 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 
 #System_Block_Diagram
 
-<img src="/static/img/Team_PNP_system_diagram.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+![System Block Diagram](https://i.ibb.co/G5K0410/base.jpg)
+
 
 
 # Frequently Asked Questions (FAQs):
