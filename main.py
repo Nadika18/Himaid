@@ -37,7 +37,6 @@ class Device(BaseTable):
     occupied = BooleanField()
 
 class User(BaseTable):
-    # id = PrimaryKeyField()
     name = TextField()
     age = IntegerField()
     StartDate = TextField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -65,19 +64,25 @@ def dashboard():
 # Register user route
 @app.route('/register',methods=['GET','POST'])
 def register():
+    try:
+        devices = Device.select()
+    except:
+        devices = None
     if request.method == 'POST':
         name = request.form.get('name')
         age = request.form.get('age')
         country = request.form.get('country')
         emergency = request.form.get('contact')
-        device = request.form.get('device_id')
+        device = request.form.get('dev_id')
         file=request.files['file']
         filename=secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-        print(name, age, country, emergency, device,filename)
-        User.create(id=1,name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device,fileName=filename)
+        print("________{}________".format(device))
+        User.create(name=name, age=age, Country=country, EmergencyContact=emergency, DeviceID=device,fileName=filename)
+        Device.update({Device.occupied: True}).where(Device.id == device).execute()
+
         return redirect(url_for('dashboard'))
-    return render_template('register.html')
+    return render_template('register.html', devices = devices)
 
 # Register user route
 @app.route('/registerdevice',methods=['GET','POST'])

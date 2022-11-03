@@ -18,6 +18,7 @@
         <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
           <div class="card-img-left d-none d-md-flex">
             <!-- Background image for card set in CSS! -->
+            <img src="" alt="">
           </div>
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
@@ -46,8 +47,13 @@
               </div>
               <!-- Create input for device id in integer -->
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="device_id" id="floatingDeviceId" placeholder="Device ID">
-                <label for="floatingDeviceId">Device ID</label>
+                <select name="dev_id" id="deviceID">
+                  {% for device in devices %}
+                  {% if device.occupied == False %}
+                  <option value="{{device.id}}">{{device.serial_number}}</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
               </div>
               <br>
               <div class="form-floating mb-3">
@@ -61,9 +67,6 @@
               <div class="d-grid mb-2">
                 <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit" value=Upload>Register</button>
               </div>
-
-             
-
             </form>
           </div>
         </div>
