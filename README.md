@@ -73,6 +73,68 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 |  1000Mah                | 4.2          | 4.2           | 636.363            | 26.515           |
 |  2000Mah                | 4.2          | 8.2           | 1242.42            | 51.767           |
 
+# Cost Calculation
+
+## Prototype Cost
+
+### Userend Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $8                |
+| MicroController: RP2040 | $4                |
+| GPS: Neo6M              | $6                |
+| **Total**               |  $18              |
+
+### Base Station Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $8                |
+| RaspberryPi 4           | $45               |
+| GPS: Neo6M              | $6                |
+| **Total**               | $59               |
+
+## Mass Production Estimated Cost
+
+### Userend Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $4                |
+| MicroController: RP2040 | $1                |
+| GPS: Neo6M              | $2                |
+| Battery                 | $3                |
+|Enclosure and Fabrication| $5                |
+| **Total**               | $13               |
+
+### Base Station Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $4                |
+| RaspberryPi 4           | $25               |
+| **Total**               | $29               |
+
+# Capital Recovery Period
+
+Base Camp Entry Cost: Nrs.2750
+Total Yearly Trekkers: 25000+
+Total Revenue: Nrs.2700 * 25000 = Nrs.68750000 (6.875 crores)
+Maximum Number of People throughout a trek: 100
+Total Devices Required: 100
+Userend Device Total Cost: 100 * $13 = $1300
+Total Base Station Devices Required = 3
+Basestation Device Total Cost: 3 * 29 = $87
+Total Deployment Cost = $1000 + $87 = $1387(Nrs.176000)
+
+What is the cost per person required to afford our solution.
+Per Person Increase in Entry Cost = Total Deployment Cost / Total People per year = Nrs.7.04
+Nrs.7.04 is a minimal increase for what the device assures to be.
+Its Nrs.7.04 or a higher probability to recover you from a disaster.
+Now we can deploy a profit strategy to maintain and service the devices throughout its lifetime.
+This caculation ignores the cost of operation and maintenance of the devices. So the cost per person can be increased to compensate on this factor.
+
 # Frequently Asked Questions (FAQs):
 
 **Q1.** *What is LoRa?*
