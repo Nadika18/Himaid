@@ -21,10 +21,14 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 125px;
+	height: 212px;
 	background-image: url("../img/banner.jpg");
 	background-position: center;
 	background-size: cover;
+}
+
+.container {
+	max-width: 97rem!important;
 }
 
 .img-circle {
@@ -50,14 +54,22 @@ body {
 	margin: 10px 15px;
 }
 
+.row {
+    display: flex!important;
+	flex-wrap: nowrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 .profile-card {
-	padding : 2rem!important;
+	padding : 135px!important;
+	width: 30rem;
 }
 
 .gmap_canvas {
 	overflow: hidden;
 	background: none !important;
-	height: 500px;
+	height: 800px;
 	/* width: 100% */
 	width: 62rem!important;
 }

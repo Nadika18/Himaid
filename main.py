@@ -103,8 +103,8 @@ def profile(device):
         lat = location.Latitude
         lon = location.Longitude
     except:
-        lat = 23.37
-        lon = 87.67
+        lat = 28.37
+        lon = 83.67
     return render_template('profile.html', user=user, lat=lat, long=lon)
 
 @app.route('/delete/<username>')
