@@ -110,6 +110,7 @@ def profile(device):
 @app.route('/delete/<username>')
 def delete(username):
     obj=User.get(User.DeviceID==username)
+    Device.update({Device.occupied: False}).where(Device.id == obj.DeviceID).execute()
     obj.delete_instance()
     return redirect(url_for('dashboard'))
 

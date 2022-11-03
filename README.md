@@ -21,7 +21,120 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 [![Team-PNP-system-diagram.png](https://i.postimg.cc/Tw2CWX9F/Team-PNP-system-diagram.png)](https://postimg.cc/wtPhSZnQ)
 <p align='center'>System Block diagram</p>
 
+# Power Calculation
 
+## Highest Power Estimation
+
+| **Power Consumption**   | **Current**  | **Voltage**   | **Power**          |
+|-------------------------|--------------|---------------|--------------------|
+| LoRa: SX1278            | 0.087        | 3.3           | 0.2871             |
+| MicroController: RP2040 | 0.1          | 3.3           | 0.33               |
+| GPS: Neo6M              | 0.05         | 3.3           | 0.165              |
+| **Total**               |              |               | 0.7821             |
+
+### Usage Time
+|  **Battery**            |              |               |                    |
+|-------------------------|--------------|---------------|--------------------|
+|  **Capacity**           | **Voltage**  | **Watt Hour** | **Time in hours**  |
+|  500Mah                 | 4.2          | 2.1           | 2.685              |
+|  1000Mah                | 4.2          | 4.2           | 5.370              |
+|  2000Mah                | 4.2          | 8.2           | 10.48              |
+
+## Normal Power Estimation
+
+| **Power Consumption**   | **Current**  | **Voltage**   | **Power**          |
+|-------------------------|--------------|---------------|--------------------|
+| LoRa: SX1278            | 0.047        | 3.3           |  0.132             |
+| MicroController: RP2040 | 0.05         | 3.3           |  0.165             |
+| GPS: Neo6M              | 0.04         | 3.3           |  0.132             |
+| **Total**               |              |               |  0.429             |
+
+### Usage Time
+|  **Battery**            |              |               |                    |
+|-------------------------|--------------|---------------|--------------------|
+|  **Capacity**           | **Voltage**  | **Watt Hour** | **Time in hours**  |
+|  500Mah                 | 4.2          | 2.1           | 4.895              |
+|  1000Mah                | 4.2          | 4.2           | 9.790              |
+|  2000Mah                | 4.2          | 8.2           | 19.11              |
+
+## Sleep Power Estimation
+
+| **Power Consumption**   | **Current**  | **Voltage**   | **Power**          |
+|-------------------------|--------------|---------------|--------------------|
+| LoRa: SX1278            | 0.000        | 3.3           |  0                 |
+| MicroController: RP2040 | 0.002        | 3.3           |  0.0066            |
+| GPS: Neo6M              | 0.000        | 3.3           |  0                 |
+| **Total**               |              |               |  0.0066            |
+
+### Usage Time
+|  **Battery**            |              |               |                    |                  |
+|-------------------------|--------------|---------------|--------------------|------------------|
+|  **Capacity**           | **Voltage**  | **Watt Hour** | **Time in hours**  | **Time in days** |
+|  500Mah                 | 4.2          | 2.1           | 318.181            | 13.257           |
+|  1000Mah                | 4.2          | 4.2           | 636.363            | 26.515           |
+|  2000Mah                | 4.2          | 8.2           | 1242.42            | 51.767           |
+
+# Cost Calculation
+
+## Prototype Cost
+
+### Userend Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $8                |
+| MicroController: RP2040 | $4                |
+| GPS: Neo6M              | $6                |
+| **Total**               |  $18              |
+
+### Base Station Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $8                |
+| RaspberryPi 4           | $45               |
+| GPS: Neo6M              | $6                |
+| **Total**               | $59               |
+
+## Mass Production Estimated Cost
+
+### Userend Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $4                |
+| MicroController: RP2040 | $1                |
+| GPS: Neo6M              | $2                |
+| Battery                 | $3                |
+|Enclosure and Fabrication| $5                |
+| **Total**               | $13               |
+
+### Base Station Device
+
+| **Device**              | **Cost(In USD)**  |
+|-------------------------|-------------------|
+| LoRa: SX1278            | $4                |
+| RaspberryPi 4           | $25               |
+| **Total**               | $29               |
+
+# Capital Recovery Period
+
+Base Camp Entry Cost: Nrs.2750
+Total Yearly Trekkers: 25000+
+Total Revenue: Nrs.2700 * 25000 = Nrs.68750000 (6.875 crores)
+Maximum Number of People throughout a trek: 100
+Total Devices Required: 100
+Userend Device Total Cost: 100 * $13 = $1300
+Total Base Station Devices Required = 3
+Basestation Device Total Cost: 3 * 29 = $87
+Total Deployment Cost = $1000 + $87 = $1387(Nrs.176000)
+
+What is the cost per person required to afford our solution.
+Per Person Increase in Entry Cost = Total Deployment Cost / Total People per year = Nrs.7.04
+Nrs.7.04 is a minimal increase for what the device assures to be.
+Its Nrs.7.04 or a higher probability to recover you from a disaster.
+Now we can deploy a profit strategy to maintain and service the devices throughout its lifetime.
+This caculation ignores the cost of operation and maintenance of the devices. So the cost per person can be increased to compensate on this factor.
 
 # Frequently Asked Questions (FAQs):
 
