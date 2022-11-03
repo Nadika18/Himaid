@@ -20,7 +20,58 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 
 ![System Block Diagram](https://ibb.co/tmRDDH4)
 
+# Power Calculation
 
+## Highest Power Estimation
+
+| **Power Consumption**   | **Current**  | **Voltage**   | **Power**          |
+|-------------------------|--------------|---------------|--------------------|
+| LoRa: SX1278            | 0.087        | 3.3           | 0.2871             |
+| MicroController: RP2040 | 0.1          | 3.3           | 0.33               |
+| GPS: Neo6M              | 0.05         | 3.3           | 0.165              |
+| **Total**               |              |               | 0.7821             |
+
+### Usage Time
+|  **Battery**            |              |               |                    |
+|-------------------------|--------------|---------------|--------------------|
+|  **Capacity**           | **Voltage**  | **Watt Hour** | **Time in hours**  |
+|  500Mah                 | 4.2          | 2.1           | 2.685              |
+|  1000Mah                | 4.2          | 4.2           | 5.370              |
+|  2000Mah                | 4.2          | 8.2           | 10.48              |
+
+## Normal Power Estimation
+
+| **Power Consumption**   | **Current**  | **Voltage**   | **Power**          |
+|-------------------------|--------------|---------------|--------------------|
+| LoRa: SX1278            | 0.047        | 3.3           |  0.132             |
+| MicroController: RP2040 | 0.05         | 3.3           |  0.165             |
+| GPS: Neo6M              | 0.04         | 3.3           |  0.132             |
+| **Total**               |              |               |  0.429             |
+
+### Usage Time
+|  **Battery**            |              |               |                    |
+|-------------------------|--------------|---------------|--------------------|
+|  **Capacity**           | **Voltage**  | **Watt Hour** | **Time in hours**  |
+|  500Mah                 | 4.2          | 2.1           | 4.895              |
+|  1000Mah                | 4.2          | 4.2           | 9.790              |
+|  2000Mah                | 4.2          | 8.2           | 19.11              |
+
+## Sleep Power Estimation
+
+| **Power Consumption**   | **Current**  | **Voltage**   | **Power**          |
+|-------------------------|--------------|---------------|--------------------|
+| LoRa: SX1278            | 0.000        | 3.3           |  0                 |
+| MicroController: RP2040 | 0.002        | 3.3           |  0.0066            |
+| GPS: Neo6M              | 0.000        | 3.3           |  0                 |
+| **Total**               |              |               |  0.0066            |
+
+### Usage Time
+|  **Battery**            |              |               |                    |                  |
+|-------------------------|--------------|---------------|--------------------|------------------|
+|  **Capacity**           | **Voltage**  | **Watt Hour** | **Time in hours**  | **Time in days** |
+|  500Mah                 | 4.2          | 2.1           | 318.181            | 13.257           |
+|  1000Mah                | 4.2          | 4.2           | 636.363            | 26.515           |
+|  2000Mah                | 4.2          | 8.2           | 1242.42            | 51.767           |
 
 # Frequently Asked Questions (FAQs):
 
