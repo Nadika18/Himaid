@@ -109,7 +109,7 @@ def profile(device):
 
 @app.route('/delete/<username>')
 def delete(username):
-    obj=User.get(User.name==username)
+    obj=User.get(User.DeviceID==username)
     obj.delete_instance()
     return redirect(url_for('dashboard'))
 
