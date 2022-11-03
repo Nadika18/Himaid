@@ -15,6 +15,12 @@ Our proposed solution is a ***small and portable*** physical device that can be 
 ![Base Station Device](https://i.ibb.co/G5K0410/base.jpg)
 <p align='center'>Base Station Device</p>
 
+
+#System_Block_Diagram
+
+<img src="/static/img/Team_PNP_system_diagram.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
+
 # Frequently Asked Questions (FAQs):
 
 **Q1.** *What is LoRa?*
